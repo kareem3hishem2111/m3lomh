@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.cisa.gov https://*.googleapis.com https://*.firebaseio.com https://*.google.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
+<title>M3LOMH | معلومة — Cyber Security Platform</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head><body data-theme="matrix">
+<header><div class="wrap"><img id="logo-s" src="assets/logo.png" alt="M3LOMH"><b class="mono">M3LOMH</b>
+<nav><a href="#free" data-i18n="free"></a><a href="#pro" data-i18n="pro"></a><a href="#learn" data-i18n="learn"></a></nav>
+<select id="lang" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="ru">Русский</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option></select></div></header>
+<main class="wrap">
+<div class="hero"><img id="logo-h" src="assets/logo.png" alt="M3LOMH shield"><h1 class="mono">M3LOMH · معلومة</h1><p data-i18n="tagline"></p>
+<a class="btn" id="wa" href="https://whatsapp.com/channel/0029Vb8ZtMm5kg7E5eiZGi2b" target="_blank" rel="noopener noreferrer" data-i18n="cta"></a>
+<div class="stats"><div class="stat"><b id="c-free">0</b><span data-i18n="free"></span></div><div class="stat"><b id="c-pro">0</b><span data-i18n="pro"></span></div><div class="stat"><b id="c-mat">0</b>Materials</div></div>
+<div class="soc" id="social"></div></div>
+
+<details class="layer" open><summary data-i18n="radar"></summary><div class="body"><div class="strip" id="kev"></div></div></details>
+
+<details class="layer" open><summary data-i18n="triage"></summary><div class="body"><input id="ioc" class="w100 mono" placeholder="MD5 / SHA1 / SHA256 / IPv4 / IPv6 / domain" autocomplete="off" spellcheck="false"><p id="ioc-type" class="mono"></p><div class="row" id="ioc-links"></div></div></details>
+
+<details class="layer" open><summary data-i18n="builder"></summary><div class="body">
+<div class="row"><input id="tip" value="10.10.10.10" class="mono" aria-label="Target IP"><input id="tport" value="443" class="mono" aria-label="Target Port"></div>
+<div class="tabs" id="cmd-tabs"></div><div id="cmd-out"></div></div></details>
+
+<details class="layer" id="free" open><summary data-i18n="free"></summary><div class="body"><div class="tabs" id="free-tabs"></div><div class="grid" id="free-grid"></div></div></details>
+<details class="layer" id="pro" open><summary data-i18n="pro"></summary><div class="body"><div class="tabs" id="pro-tabs"></div><div class="grid" id="pro-grid"></div></div></details>
+<details class="layer" id="learn" open><summary data-i18n="learn"></summary><div class="body"><div id="roads"></div><h3 class="mono">Materials</h3><div class="grid" id="mats"></div></div></details>
+</main>
+<dialog id="modal"><div id="modal-body"></div><p><button id="modal-x">✕</button></p></dialog>
+<footer class="mono">© M3LOMH — Cyber Security Engineer</footer>
+<script type="module" src="js/app.js"></script>
+</body></html>

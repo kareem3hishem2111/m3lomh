@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == 'ADMIN_UID_HERE';
+    }
+    function isShortString(v, max) {
+      return v is string && v.size() <= max;
+    }
+    match /free_tools/{docId}    { allow read: if true; allow write: if isAdmin(); }
+    match /pro_store/{docId}     { allow read: if true; allow write: if isAdmin(); }
+    match /materials/{docId}     { allow read: if true; allow write: if isAdmin(); }
+    match /roadmaps/{docId}      { allow read: if true; allow write: if isAdmin(); }
+    match /site_settings/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /promo_codes/{code} {
+      allow get: if true;
+      allow list, write: if isAdmin();
+    }
+    match /security_logs/{logId} {
+      allow create: if request.resource.data.keys().hasAll(['timestamp', 'userAgent', 'source'])
+                    && request.resource.data.keys().hasOnly(
+                         ['timestamp', 'userAgent', 'source', 'screen', 'timezone', 'username', 'type'])
+                    && request.resource.data.timestamp == request.time
+                    && isShortString(request.resource.data.userAgent, 300)
+                    && isShortString(request.resource.data.source, 50)
+                    && (!('screen' in request.resource.data)   || isShortString(request.resource.data.screen, 30))
+                    && (!('timezone' in request.resource.data) || isShortString(request.resource.data.timezone, 60))
+                    && (!('username' in request.resource.data) || isShortString(request.resource.data.username, 100))
+                    && (!('type' in request.resource.data)     || isShortString(request.resource.data.type, 30));
+      allow read, delete: if isAdmin();
+      allow update: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
